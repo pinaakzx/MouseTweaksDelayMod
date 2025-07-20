@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.custom'
+version = '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Nenhuma dependência externa por enquanto
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'com.custom.MouseTweaksDelayMod'
+        )
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
